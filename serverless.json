@@ -1,0 +1,44 @@
+{
+  "service": "aws-nodejs",
+  "plugins": [
+    "serverless-plugin-typescript",
+    "serverless-offline"
+  ],
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs6.10"
+  },
+  "package": {
+    "exclude": [
+      "node_modules/**/*"
+    ],
+    "include": [
+      "src/handler.ts"
+    ]
+  },
+  "functions": {
+    "hello": {
+      "handler": "src/handler.hello",
+      "events": [
+        {
+          "http": {
+            "path": "hello",
+            "method": "get",
+            "integration": "lambda",
+            "response": {
+              "statusCodes": {
+                "200": {
+                  "pattern": ""
+                },
+                "500": {
+                  "pattern": ".*errorMessage.*",
+                  "template": "$input.path('$.errorMessage')"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "typescript-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "invoke:local": "sls invoke local --function hello",
+    "start": "sls offline start"
+  },
+  "keywords": [
+    "typescript",
+    "lambda",
+    "aws"
+  ],
+  "author": "sbkn",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.16",
+    "serverless-offline": "^3.15.3",
+    "serverless-plugin-typescript": "^1.1.2"
+  }
+}
